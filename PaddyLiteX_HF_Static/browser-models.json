@@ -1,0 +1,66 @@
+{
+  "ready": true,
+  "runtime": "onnxruntime-web@1.22.0/wasm",
+  "models": [
+    {
+      "id": "yolov8n",
+      "label": "YOLOv8n",
+      "names": [
+        "Rice__BacterialLeafBlight",
+        "Rice__BrownSpot",
+        "Rice__Healthy",
+        "Rice__Hispa",
+        "Rice__LeafBlast",
+        "Rice__LeafScald",
+        "Rice__LeafSmut",
+        "Rice__NarrowBrownLeafSpot",
+        "Rice__NeckBlast"
+      ],
+      "files": {
+        "320": "models/yolov8n_320.onnx",
+        "512": "models/yolov8n_512.onnx",
+        "640": "models/yolov8n_640.onnx"
+      }
+    },
+    {
+      "id": "yolov8n_densenet121",
+      "label": "Yolov8n_DenseNet121",
+      "names": [
+        "Rice__BacterialLeafBlight",
+        "Rice__BrownSpot",
+        "Rice__Healthy",
+        "Rice__Hispa",
+        "Rice__LeafBlast",
+        "Rice__LeafScald",
+        "Rice__LeafSmut",
+        "Rice__NarrowBrownLeafSpot",
+        "Rice__NeckBlast"
+      ],
+      "files": {
+        "320": "models/yolov8n_densenet121_320.onnx",
+        "512": "models/yolov8n_densenet121_512.onnx",
+        "640": "models/yolov8n_densenet121_640.onnx"
+      }
+    },
+    {
+      "id": "yolov8n_denselitex_sppf_c2psa",
+      "label": "DenseLiteX + SPPF + C2PSA",
+      "names": [
+        "Rice__BacterialLeafBlight",
+        "Rice__BrownSpot",
+        "Rice__Healthy",
+        "Rice__Hispa",
+        "Rice__LeafBlast",
+        "Rice__LeafScald",
+        "Rice__LeafSmut",
+        "Rice__NarrowBrownLeafSpot",
+        "Rice__NeckBlast"
+      ],
+      "files": {
+        "320": "models/yolov8n_denselitex_sppf_c2psa_320.onnx",
+        "512": "models/yolov8n_denselitex_sppf_c2psa_512.onnx",
+        "640": "models/yolov8n_denselitex_sppf_c2psa_640.onnx"
+      }
+    }
+  ]
+}

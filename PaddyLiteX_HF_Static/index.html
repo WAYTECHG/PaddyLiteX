@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Paddy disease detection: compare YOLOv8n, Yolov8n_DenseNet121 and DenseLiteX predictions and research benchmarks."
+    />
+    <title>PaddyLiteX · Thesis II</title>
+    <link rel="icon" href="./favicon.svg" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./browser-runtime.js" defer></script>
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="PaddyLiteX home">
+        <span class="brandmark"><img src="./favicon.svg" alt="" aria-hidden="true" /></span>
+        <span>
+          PaddyLiteX
+          <small>THESIS II</small>
+        </span>
+      </a>
+      <nav class="tabs" aria-label="Main views">
+        <button class="tab active" data-view="workspace" aria-selected="true">
+          Detection studio
+        </button>
+        <button class="tab" data-view="benchmarks" aria-selected="false">Model benchmarks</button>
+      </nav>
+      <span class="research">XMUM · AI Engineering</span>
+    </header>
+    <main>
+      <section id="workspace" class="view active">
+        <section class="studio-hero intro-playing" id="studio-hero" aria-labelledby="hero-title">
+          <div class="hero-glow hero-glow-mint" aria-hidden="true"></div>
+          <div class="hero-glow hero-glow-blue" aria-hidden="true"></div>
+          <div class="hero-copy">
+            <p class="hero-eyebrow">
+              <span></span>
+              COMPUTER VISION · PADDY DISEASE DETECTION
+            </p>
+            <h1 id="hero-title">
+              A closer look.
+              <br />
+              <span>A clearer comparison.</span>
+            </h1>
+            <p class="hero-description">
+              From a paddy image to three model perspectives. Explore disease detections and the
+              balance between model performance and complexity.
+            </p>
+            <div class="hero-actions">
+              <button class="hero-primary" id="start-comparison">
+                Start comparison
+                <span aria-hidden="true">↗</span>
+              </button>
+              <button class="hero-secondary" data-view="benchmarks">Explore benchmarks</button>
+            </div>
+            <div class="hero-facts" aria-label="Demonstration workflow">
+              <span>
+                <b>01</b>
+                Upload an image
+              </span>
+              <span>
+                <b>02</b>
+                Compare three models
+              </span>
+              <span>
+                <b>03</b>
+                Explore the results
+              </span>
+            </div>
+          </div>
+          <div class="hero-art" aria-label="Animated illustration of a paddy leaf">
+            <div class="leaf-orbit orbit-one" aria-hidden="true"></div>
+            <div class="leaf-orbit orbit-two" aria-hidden="true"></div>
+            <div class="leaf-visual">
+              <div class="leaf-visual-header">
+                <span class="visual-dot"></span>
+                PADDY LEAF STUDY
+                <span>01 / 03</span>
+              </div>
+              <svg class="paddy-illustration" viewBox="0 0 360 360" aria-hidden="true">
+                <defs>
+                  <linearGradient id="blade-main" x1="0" y1="1" x2="1" y2="0">
+                    <stop offset="0" stop-color="#176c51" />
+                    <stop offset="0.5" stop-color="#73ca73" />
+                    <stop offset="1" stop-color="#d5eea2" />
+                  </linearGradient>
+                  <linearGradient id="blade-side" x1="0" y1="1" x2="1" y2="0">
+                    <stop offset="0" stop-color="#277e61" />
+                    <stop offset="1" stop-color="#a0ddb7" />
+                  </linearGradient>
+                </defs>
+                <g fill="none" stroke="#a1d9cb" stroke-opacity="0.18">
+                  <circle cx="180" cy="180" r="130" />
+                  <circle cx="180" cy="180" r="95" stroke-dasharray="3 9" />
+                  <path d="M180 22v316M22 180h316" />
+                </g>
+                <path
+                  d="M133 303C132 202 182 109 287 35c-12 106-51 212-154 268Z"
+                  fill="url(#blade-main)"
+                />
+                <path
+                  d="M139 297C180 192 232 105 278 49"
+                  fill="none"
+                  stroke="#e5f3b0"
+                  stroke-width="3"
+                />
+                <g fill="none" stroke="#cff0ad" stroke-opacity="0.55" stroke-width="1.4">
+                  <path d="m160 246 51-11m-36-23 51-12m-34-19 50-14m-33-17 43-17m-30-8 36-21" />
+                  <path d="m160 246-7-49m22 15-3-48m20 17 1-42m16 11 5-38m8 13 10-31" />
+                </g>
+                <path
+                  d="M132 303C85 254 61 179 64 92c58 65 97 136 68 211Z"
+                  fill="url(#blade-side)"
+                />
+                <path
+                  d="M133 304C107 222 82 153 67 105"
+                  fill="none"
+                  stroke="#c4edc8"
+                  stroke-width="2"
+                />
+                <path
+                  d="M124 331c11-27 19-54 23-76"
+                  fill="none"
+                  stroke="#d5efa9"
+                  stroke-width="4"
+                  stroke-linecap="round"
+                />
+                <g fill="none" stroke="#adebcf" stroke-width="2" stroke-linecap="round">
+                  <path d="M103 125v-18h18M257 125v-18h-18M103 256v18h18M257 256v18h-18" />
+                </g>
+              </svg>
+              <div class="leaf-scan" aria-hidden="true"></div>
+              <div class="leaf-visual-footer">
+                <span>Leaf illustration</span>
+                <span>Research visualization</span>
+              </div>
+            </div>
+            <div class="floating-tag tag-quality">
+              <span class="tag-icon">◈</span>
+              <div>
+                <small>THE QUESTION</small>
+                <strong>How well does it detect?</strong>
+              </div>
+            </div>
+            <div class="floating-tag tag-complexity">
+              <span class="tag-icon">◎</span>
+              <div>
+                <small>THE TRADE-OFF</small>
+                <strong>How much does it cost?</strong>
+              </div>
+            </div>
+          </div>
+          <div class="hero-bottom">
+            <span class="hero-signature">
+              PaddyLiteX
+              <span>RESEARCH IN ACTION</span>
+            </span>
+            <div class="hero-motion-controls">
+              <button id="replay-intro">
+                <span aria-hidden="true">↻</span>
+                Replay intro
+              </button>
+              <button id="toggle-motion" aria-pressed="false">Pause motion</button>
+            </div>
+          </div>
+        </section>
+
+        <div class="heading">
+          <div>
+            <p class="eyebrow">PADDY DISEASE DETECTION</p>
+            <h2 class="studio-title">Detection studio</h2>
+            <p class="muted">Compare your baselines and proposed model on the same image.</p>
+          </div>
+          <span class="pill" id="service-status">Checking model availability</span>
+        </div>
+        <div class="studio-grid">
+          <section class="panel upload-panel" id="studio-input">
+            <div class="panel-heading">
+              <h2>Input image</h2>
+              <span class="micro">JPEG · PNG · WebP</span>
+            </div>
+            <label class="dropzone" id="dropzone" tabindex="0">
+              <input id="file" type="file" accept="image/jpeg,image/png,image/webp" hidden />
+              <span id="upload-hint">
+                <span class="upload-icon" aria-hidden="true">＋</span>
+                <strong>Choose a paddy image</strong>
+                <span>or drag it here</span>
+                <small>Up to 10 MB · 12 megapixels</small>
+              </span>
+              <img id="input-preview" alt="Selected paddy image" hidden />
+            </label>
+            <div class="fileline">
+              <span id="filename">No image selected</span>
+              <button id="clear" class="text-button" hidden>Clear</button>
+            </div>
+            <div class="settings">
+              <div>
+                <label for="confidence">
+                  Confidence threshold
+                  <output id="confidence-value">0.25</output>
+                </label>
+                <input
+                  type="range"
+                  id="confidence"
+                  min="0.05"
+                  max="0.95"
+                  step="0.05"
+                  value="0.25"
+                />
+              </div>
+              <div>
+                <label for="image-size">Model input size</label>
+                <select id="image-size">
+                  <option value="320">320 × 320</option>
+                  <option value="512" selected>512 × 512</option>
+                  <option value="640">640 × 640</option>
+                </select>
+              </div>
+            </div>
+            <button class="primary" id="compare" disabled>Compare all three models</button>
+            <p class="privacy">Images are processed on your device and are not uploaded to a detection server.</p>
+            <p class="message" id="message" role="status" aria-live="polite"></p>
+          </section>
+          <section class="panel guidance">
+            <div>
+              <p class="eyebrow">CONTROLLED COMPARISON</p>
+              <h2>
+                The same input.
+                <br />
+                The same settings.
+              </h2>
+              <p>
+                Each model receives the same image, confidence threshold and input size. Explore
+                bounding boxes, predicted classes and confidence side by side.
+              </p>
+            </div>
+            <div class="model-list" id="model-list"></div>
+            <div class="note">
+              <strong>Prediction confidence ≠ accuracy</strong>
+              <p>
+                An uploaded image has no ground-truth annotation. Dataset-level performance is
+                available in Model benchmarks.
+              </p>
+            </div>
+          </section>
+        </div>
+        <div class="section-heading">
+          <div>
+            <h2>Detection results</h2>
+            <p class="muted">Real model predictions appear here after comparison.</p>
+          </div>
+          <span class="micro">P3 / P4 / P5 · 9 classes</span>
+        </div>
+        <div class="result-grid" id="results"></div>
+      </section>
+      <section id="benchmarks" class="view" hidden>
+        <div class="heading">
+          <div>
+            <p class="eyebrow">RECORDED EXPERIMENTAL RESULTS</p>
+            <h1>Performance, with perspective.</h1>
+            <p class="muted">
+              Detection quality and computational complexity across the evaluated models.
+            </p>
+          </div>
+          <div class="segmented">
+            <button data-scope="main" class="selected">Main comparison</button>
+            <button data-scope="ablation">Ablation study</button>
+          </div>
+        </div>
+        <div class="stat-grid">
+          <div class="stat">
+            <small>Test images</small>
+            <strong id="test-images">803</strong>
+          </div>
+          <div class="stat">
+            <small>Annotated objects</small>
+            <strong id="test-objects">2,466</strong>
+          </div>
+          <div class="stat">
+            <small>Detection classes</small>
+            <strong id="test-classes">9</strong>
+          </div>
+          <div class="stat">
+            <small>Proposed mAP@0.5:0.95</small>
+            <strong class="green" id="proposed-map5095">
+              58.54
+              <span>%</span>
+            </strong>
+          </div>
+          <div class="stat">
+            <small>Proposed mAP@0.5</small>
+            <strong class="green" id="proposed-map50">
+              82.26
+              <span>%</span>
+            </strong>
+          </div>
+        </div>
+        <div class="chart-grid">
+          <section class="panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">DETECTION PERFORMANCE</p>
+                <h2>Quality across models</h2>
+              </div>
+              <select id="metric" aria-label="Detection metric">
+                <option value="map5095">mAP@0.5:0.95</option>
+                <option value="map50">mAP@0.5</option>
+                <option value="precision">Precision</option>
+                <option value="recall">Recall</option>
+              </select>
+            </div>
+            <div id="quality-chart" class="bars"></div>
+            <p class="chart-note">Percent · higher is better · axis starts at zero</p>
+          </section>
+          <section class="panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">COMPUTATIONAL COMPLEXITY</p>
+                <h2>Cost across models</h2>
+              </div>
+              <select id="cost-metric" aria-label="Complexity metric">
+                <option value="parameters">Parameters</option>
+                <option value="gflops">GFLOPs</option>
+              </select>
+            </div>
+            <div id="cost-chart" class="bars"></div>
+            <p class="chart-note">Lower is lighter · axis starts at zero</p>
+          </section>
+        </div>
+        <section class="panel scatter-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">PERFORMANCE–COMPLEXITY TRADE-OFF</p>
+              <h2>Where each model stands</h2>
+            </div>
+            <span class="micro" id="scatter-metrics">Parameters vs. mAP@0.5:0.95</span>
+          </div>
+          <div id="scatter"></div>
+          <div id="legend" class="legend"></div>
+        </section>
+        <div class="insight-grid">
+          <div class="insight">
+            <small>Against Yolov8n_DenseNet121 baseline</small>
+            <strong id="map-improvement">+1.41%</strong>
+            <p>mAP@0.5:0.95 score increase</p>
+            <p class="insight-values" id="map5095-change">57.13% → 58.54%</p>
+          </div>
+          <div class="insight">
+            <small>Against Yolov8n_DenseNet121 baseline</small>
+            <strong id="map50-improvement">+1.02%</strong>
+            <p>mAP@0.5 score increase</p>
+            <p class="insight-values" id="map50-change">81.24% → 82.26%</p>
+          </div>
+          <div class="insight">
+            <small>Against Yolov8n_DenseNet121 baseline</small>
+            <strong id="parameter-reduction">61.06% fewer</strong>
+            <p>parameters</p>
+          </div>
+          <div class="insight">
+            <small>Against Yolov8n_DenseNet121 baseline</small>
+            <strong id="flops-reduction">69.76% fewer</strong>
+            <p>reported GFLOPs</p>
+          </div>
+        </div>
+        <section class="panel class-panel" id="class-panel" aria-labelledby="class-heading">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">CLASS-LEVEL DETECTION PERFORMANCE</p>
+              <h2 id="class-heading">Every class, three perspectives.</h2>
+              <p class="muted">
+                Compare your two baselines and final proposed model for each class.
+              </p>
+            </div>
+            <button class="secondary" id="download-class-csv" disabled>Export class CSV</button>
+          </div>
+          <div class="class-toolbar">
+            <label>
+              Performance metric
+              <select id="class-metric">
+                <option value="map5095">AP@0.5:0.95</option>
+                <option value="map50">AP@0.5</option>
+                <option value="precision">Precision</option>
+                <option value="recall">Recall</option>
+              </select>
+            </label>
+            <label>
+              Class order
+              <select id="class-order">
+                <option value="dataset">Dataset order</option>
+                <option value="lowest">Proposed: lowest first</option>
+                <option value="highest">Proposed: highest first</option>
+              </select>
+            </label>
+            <span class="micro" id="class-context"></span>
+          </div>
+          <div id="class-legend" class="legend"></div>
+          <div id="class-chart" aria-live="polite"></div>
+          <p class="chart-note" id="class-note">
+            Test-set performance · percent · higher is better · all bars use a 0–100% scale.
+          </p>
+        </section>
+        <section class="panel table-panel">
+          <div class="panel-heading">
+            <h2>Exact measurements</h2>
+            <button class="secondary" id="download-csv">Export CSV</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Model</th>
+                  <th>Precision</th>
+                  <th>Recall</th>
+                  <th>mAP@0.5</th>
+                  <th>mAP@0.5:0.95</th>
+                  <th>Parameters</th>
+                  <th>GFLOPs</th>
+                </tr>
+              </thead>
+              <tbody id="metrics-table"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+      <footer>
+        <span>PaddyLiteX · Thesis II demonstration</span>
+        <span>AIT2309246</span>
+      </footer>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,247 @@
+{
+  "schema_version": 1,
+  "unit": "percent",
+  "context": {
+    "source": "Class-level test-set results from my three paddy disease detection experiments",
+    "split": "test",
+    "images": 803,
+    "objects": 2466,
+    "precision_note": "Transcribed from the displayed validation tables. Values use the precision shown in the screenshots; full-precision exports may differ slightly."
+  },
+  "classes": [
+    {
+      "id": 0,
+      "name": "Rice__BacterialLeafBlight",
+      "images": 183,
+      "instances": 209,
+      "models": {
+        "yolov8n": {
+          "precision": 93.3,
+          "recall": 90.9,
+          "map50": 93.9,
+          "map5095": 71.4
+        },
+        "yolov8n_densenet121": {
+          "precision": 96.4,
+          "recall": 90.1,
+          "map50": 92.1,
+          "map5095": 77.4
+        },
+        "yolov8n_denselitex_sppf_c2psa": {
+          "precision": 95.4,
+          "recall": 91.4,
+          "map50": 93.4,
+          "map5095": 77.5
+        }
+      }
+    },
+    {
+      "id": 1,
+      "name": "Rice__BrownSpot",
+      "images": 174,
+      "instances": 1280,
+      "models": {
+        "yolov8n": {
+          "precision": 89.7,
+          "recall": 83.8,
+          "map50": 92.1,
+          "map5095": 57.7
+        },
+        "yolov8n_densenet121": {
+          "precision": 95.4,
+          "recall": 85.0,
+          "map50": 95.1,
+          "map5095": 62.8
+        },
+        "yolov8n_denselitex_sppf_c2psa": {
+          "precision": 89.2,
+          "recall": 86.5,
+          "map50": 93.1,
+          "map5095": 59.5
+        }
+      }
+    },
+    {
+      "id": 2,
+      "name": "Rice__Healthy",
+      "images": 44,
+      "instances": 69,
+      "models": {
+        "yolov8n": {
+          "precision": 75.4,
+          "recall": 44.9,
+          "map50": 52.1,
+          "map5095": 33.6
+        },
+        "yolov8n_densenet121": {
+          "precision": 62.9,
+          "recall": 42.0,
+          "map50": 47.9,
+          "map5095": 32.6
+        },
+        "yolov8n_denselitex_sppf_c2psa": {
+          "precision": 73.2,
+          "recall": 43.5,
+          "map50": 49.1,
+          "map5095": 33.0
+        }
+      }
+    },
+    {
+      "id": 3,
+      "name": "Rice__Hispa",
+      "images": 44,
+      "instances": 89,
+      "models": {
+        "yolov8n": {
+          "precision": 85.4,
+          "recall": 84.3,
+          "map50": 83.0,
+          "map5095": 54.3
+        },
+        "yolov8n_densenet121": {
+          "precision": 89.7,
+          "recall": 80.9,
+          "map50": 81.0,
+          "map5095": 53.5
+        },
+        "yolov8n_denselitex_sppf_c2psa": {
+          "precision": 83.1,
+          "recall": 82.0,
+          "map50": 81.5,
+          "map5095": 55.4
+        }
+      }
+    },
+    {
+      "id": 4,
+      "name": "Rice__LeafBlast",
+      "images": 46,
+      "instances": 70,
+      "models": {
+        "yolov8n": {
+          "precision": 65.8,
+          "recall": 55.7,
+          "map50": 63.7,
+          "map5095": 39.5
+        },
+        "yolov8n_densenet121": {
+          "precision": 69.5,
+          "recall": 60.0,
+          "map50": 64.5,
+          "map5095": 41.6
+        },
+        "yolov8n_denselitex_sppf_c2psa": {
+          "precision": 69.4,
+          "recall": 68.1,
+          "map50": 68.1,
+          "map5095": 46.5
+        }
+      }
+    },
+    {
+      "id": 5,
+      "name": "Rice__LeafScald",
+      "images": 46,
+      "instances": 51,
+      "models": {
+        "yolov8n": {
+          "precision": 83.8,
+          "recall": 86.3,
+          "map50": 86.7,
+          "map5095": 56.7
+        },
+        "yolov8n_densenet121": {
+          "precision": 91.1,
+          "recall": 78.4,
+          "map50": 86.0,
+          "map5095": 56.0
+        },
+        "yolov8n_denselitex_sppf_c2psa": {
+          "precision": 82.9,
+          "recall": 85.4,
+          "map50": 89.9,
+          "map5095": 60.5
+        }
+      }
+    },
+    {
+      "id": 6,
+      "name": "Rice__LeafSmut",
+      "images": 175,
+      "instances": 535,
+      "models": {
+        "yolov8n": {
+          "precision": 96.4,
+          "recall": 95.4,
+          "map50": 98.0,
+          "map5095": 75.2
+        },
+        "yolov8n_densenet121": {
+          "precision": 97.1,
+          "recall": 95.7,
+          "map50": 97.9,
+          "map5095": 76.8
+        },
+        "yolov8n_denselitex_sppf_c2psa": {
+          "precision": 95.9,
+          "recall": 95.9,
+          "map50": 97.9,
+          "map5095": 77.3
+        }
+      }
+    },
+    {
+      "id": 7,
+      "name": "Rice__NarrowBrownLeafSpot",
+      "images": 45,
+      "instances": 66,
+      "models": {
+        "yolov8n": {
+          "precision": 76.5,
+          "recall": 66.7,
+          "map50": 70.1,
+          "map5095": 45.7
+        },
+        "yolov8n_densenet121": {
+          "precision": 70.6,
+          "recall": 65.2,
+          "map50": 73.9,
+          "map5095": 50.5
+        },
+        "yolov8n_denselitex_sppf_c2psa": {
+          "precision": 65.7,
+          "recall": 72.7,
+          "map50": 76.1,
+          "map5095": 51.2
+        }
+      }
+    },
+    {
+      "id": 8,
+      "name": "Rice__NeckBlast",
+      "images": 46,
+      "instances": 97,
+      "models": {
+        "yolov8n": {
+          "precision": 86.7,
+          "recall": 81.4,
+          "map50": 87.6,
+          "map5095": 57.7
+        },
+        "yolov8n_densenet121": {
+          "precision": 93.2,
+          "recall": 84.9,
+          "map50": 92.8,
+          "map5095": 63.0
+        },
+        "yolov8n_denselitex_sppf_c2psa": {
+          "precision": 89.7,
+          "recall": 87.6,
+          "map50": 91.3,
+          "map5095": 65.9
+        }
+      }
+    }
+  ]
+}

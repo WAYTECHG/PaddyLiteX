@@ -1,0 +1,111 @@
+{
+  "context": {
+    "source": "Test-set evaluation results from my paddy disease detection experiments, recorded on 30 September 2026",
+    "images": 803,
+    "objects": 2466,
+    "classes": 9,
+    "runs": "Each model was evaluated using one experimental run.",
+    "flops_note": "GFLOPs are taken from the model summaries.",
+    "selection_note": "The charts summarize performance on the held-out test set. They do not represent the performance on an individually uploaded image."
+  },
+  "main": [
+    {
+      "id": "yolov8n",
+      "label": "YOLOv8n",
+      "role": "Baseline 1",
+      "precision": 83.68,
+      "recall": 76.61,
+      "map50": 80.79,
+      "map5095": 54.66,
+      "parameters": 3007403,
+      "gflops": 8.1,
+      "color": "#4277ef"
+    },
+    {
+      "id": "yolov8n_densenet121",
+      "label": "Yolov8n_DenseNet121",
+      "role": "Baseline 2",
+      "precision": 85.1,
+      "recall": 75.81,
+      "map50": 81.24,
+      "map5095": 57.13,
+      "parameters": 10027275,
+      "gflops": 53.9,
+      "color": "#8265d5"
+    },
+    {
+      "id": "yolov8n_denselitex_sppf_c2psa",
+      "label": "DenseLiteX + SPPF + C2PSA",
+      "role": "Proposed",
+      "precision": 82.73,
+      "recall": 79.23,
+      "map50": 82.26,
+      "map5095": 58.54,
+      "parameters": 3905069,
+      "gflops": 16.3,
+      "color": "#129a70"
+    }
+  ],
+  "ablation": [
+    {
+      "id": "yolov8n_densenet121_sppf",
+      "label": "Yolov8n_DenseNet121 + SPPF",
+      "role": "Ablation",
+      "precision": 85.51,
+      "recall": 77.4,
+      "map50": 82.39,
+      "map5095": 58.47,
+      "parameters": 10191499,
+      "gflops": 54.0,
+      "color": "#8265d5"
+    },
+    {
+      "id": "yolov8n_denselitex",
+      "label": "DenseLiteX",
+      "role": "Ablation",
+      "precision": 81.38,
+      "recall": 73.59,
+      "map50": 79.37,
+      "map5095": 54.22,
+      "parameters": 3492525,
+      "gflops": 16.0,
+      "color": "#558da5"
+    },
+    {
+      "id": "yolov8n_denselitex_sppf",
+      "label": "DenseLiteX + SPPF",
+      "role": "Ablation",
+      "precision": 82.65,
+      "recall": 77.6,
+      "map50": 81.63,
+      "map5095": 57.22,
+      "parameters": 3656749,
+      "gflops": 16.1,
+      "color": "#e09f43"
+    },
+    {
+      "id": "yolov8n_denselitex_c2psa",
+      "label": "DenseLiteX + C2PSA",
+      "role": "Ablation",
+      "precision": 85.08,
+      "recall": 73.46,
+      "map50": 80.25,
+      "map5095": 55.97,
+      "parameters": 3740845,
+      "gflops": 16.2,
+      "color": "#d36586"
+    },
+    {
+      "id": "yolov8n_denselitex_sppf_c2psa",
+      "label": "DenseLiteX + SPPF + C2PSA",
+      "role": "Proposed",
+      "precision": 82.73,
+      "recall": 79.23,
+      "map50": 82.26,
+      "map5095": 58.54,
+      "parameters": 3905069,
+      "gflops": 16.3,
+      "color": "#129a70"
+    }
+  ]
+}

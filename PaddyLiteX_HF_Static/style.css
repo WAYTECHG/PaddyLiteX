@@ -1564,3 +1564,73 @@ footer {
     width: 100%;
   }
 }
+
+/* Dataset source beside the image upload */
+.dataset-source {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 0 0 22px;
+  padding: 15px;
+  border: 1px solid #c6ded4;
+  border-radius: 15px;
+  background: linear-gradient(125deg, #e0f2e9, #edf5ff);
+}
+.dataset-source-icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 36px;
+  width: 36px;
+  height: 36px;
+  border-radius: 11px;
+  color: #12714f;
+  background: #ffffffb3;
+}
+.dataset-source-icon svg {
+  width: 22px;
+  height: 22px;
+}
+.dataset-source-copy {
+  min-width: 0;
+}
+.dataset-source h3 {
+  margin: 0 0 4px;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 650;
+}
+.dataset-source p {
+  margin: 0 0 8px;
+  color: #435e59;
+  font-size: 13px;
+  line-height: 1.55;
+}
+.dataset-source a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #125d46;
+  font-size: 13px;
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+}
+.dataset-source a:hover {
+  color: #193f85;
+}
+.dataset-source a svg {
+  flex: 0 0 14px;
+  width: 14px;
+  height: 14px;
+}
+.dataset-source-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+/* End dataset source */

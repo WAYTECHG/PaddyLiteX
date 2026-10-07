@@ -196,6 +196,31 @@
               <span id="filename">No image selected</span>
               <button id="clear" class="text-button" hidden>Clear</button>
             </div>
+            <!-- Dataset source -->
+            <aside class="dataset-source" aria-labelledby="dataset-source-title">
+              <span class="dataset-source-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                  <path d="M20 4c0 9-4 14-10 14a6 6 0 0 1-6-6C4 6 11 4 20 4Z" />
+                  <path d="M4 20 15 9" />
+                </svg>
+              </span>
+              <div class="dataset-source-copy">
+                <h3 id="dataset-source-title">Try a dataset image</h3>
+                <p>Download a rice leaf image from Kaggle, then upload it here to compare the models.</p>
+                <a
+                  href="https://www.kaggle.com/datasets/yusufmurtaza01/rice-leaf-diseases"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  RICE Leaf Diseases · Kaggle
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                    <path d="M14 4h6v6M20 4 10 14M10 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-5" />
+                  </svg>
+                  <span class="dataset-source-sr">(opens in a new tab)</span>
+                </a>
+              </div>
+            </aside>
+            <!-- End dataset source -->
             <div class="settings">
               <div>
                 <label for="confidence">

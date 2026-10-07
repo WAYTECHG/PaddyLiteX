@@ -60,6 +60,30 @@
       "color": "#8265d5"
     },
     {
+      "id": "yolov8n_densenet121_c2psa",
+      "label": "Yolov8n_DenseNet121 + C2PSA",
+      "role": "Ablation",
+      "precision": 82.84,
+      "recall": 76.39,
+      "map50": 80.18,
+      "map5095": 57.24,
+      "parameters": 10275595,
+      "gflops": 54.1,
+      "color": "#597bc8"
+    },
+    {
+      "id": "yolov8n_densenet121_sppf_c2psa",
+      "label": "Yolov8n_DenseNet121 + SPPF + C2PSA",
+      "role": "Ablation",
+      "precision": 85.4,
+      "recall": 76.27,
+      "map50": 82.24,
+      "map5095": 58.8,
+      "parameters": 10439819,
+      "gflops": 54.2,
+      "color": "#af63b7"
+    },
+    {
       "id": "yolov8n_denselitex",
       "label": "DenseLiteX",
       "role": "Ablation",

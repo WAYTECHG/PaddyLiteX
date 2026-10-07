@@ -493,11 +493,35 @@ function classScore(row, modelId, metric) {
   return typeof value === 'number' && Number.isFinite(value) ? value : null;
 }
 
+// Ablation studies may have class results for only some of their models.
+function classChartModels() {
+  if (!benchmarkData) return [];
+  if (currentStudy === 'main') return benchmarkData.main;
+  const rows = classRows();
+  return benchmarkData.ablation.filter((model) =>
+    rows.some((row) =>
+      Object.keys(classMetricLabels).some((metric) => classScore(row, model.id, metric) !== null),
+    ),
+  );
+}
+
+function classModelCode(model, index) {
+  if (model.role === 'Proposed') return 'P';
+  return currentStudy === 'main' ? `B${index + 1}` : `A${index + 1}`;
+}
+
 function renderClassChart() {
   if (!benchmarkData) return;
   const panel = getElement('class-panel');
-  panel.hidden = currentStudy !== 'main';
-  const models = benchmarkData.main;
+  panel.hidden = false;
+  const models = classChartModels();
+  const mainStudy = currentStudy === 'main';
+  getElement('class-heading').textContent = mainStudy
+    ? 'Every class, three perspectives.'
+    : 'Class results across available ablations.';
+  getElement('class-heading').nextElementSibling.textContent = mainStudy
+    ? 'Compare your two baselines and final proposed model for each class.'
+    : 'Compare the ablation models with supplied class results and the final proposed model.';
   const metric = getElement('class-metric').value;
   const label = classMetricLabels[metric];
   const rows = classRows();
@@ -548,7 +572,7 @@ function renderClassChart() {
               const caption = `${row.name} · ${displayModelName(model)} · ${label}: ${text}`;
               return `
               <div class="class-bar" data-model-id="${escapeHtml(model.id)}" role="img" aria-label="${escapeHtml(caption)}" title="${escapeHtml(caption)}">
-                <span class="class-short" style="color: ${model.color}">${index === 0 ? 'B1' : index === 1 ? 'B2' : 'P'}</span>
+                <span class="class-short" style="color: ${model.color}">${classModelCode(model, index)}</span>
                 <div class="class-track"><div class="class-fill" style="width: ${value ?? 0}%; background: ${model.color}" ${value === null ? 'hidden' : ''}></div></div>
                 <strong>${text}</strong>
               </div>`;
@@ -558,17 +582,23 @@ function renderClassChart() {
       </div>`,
       )
       .join('')}`;
+  const missingModels = currentStudy === 'ablation'
+    ? benchmarkData.ablation.length - models.length
+    : 0;
+  const coverageNote = missingModels > 0
+    ? ` Class results are available for ${models.length} of ${benchmarkData.ablation.length} ablation models. Models without supplied class results are omitted.`
+    : '';
   getElement('class-note').textContent =
     classDataError ||
     (hasValues
-      ? `${split} set · percent · higher is better · 0–100% scale. N/A means no evaluated value was supplied. AP is reported per class; mAP averages across classes.`
+      ? `${split} set · percent · higher is better · 0–100% scale. N/A means no evaluated value was supplied. AP is reported per class; mAP averages across classes.${coverageNote}`
       : 'All nine disease classes are shown. N/A means their evaluation scores have not been supplied yet.');
 }
 
 async function loadClassMetrics() {
   try {
     const url = new URL(paddyClassResultsUrl);
-    url.searchParams.set('v', 'class-results-20261005');
+    url.searchParams.set('v', 'class-results-20261007');
     const response = await fetch(url, { cache: 'no-store' });
     if (!response.ok) {
       throw new Error(`per_class.json could not load (HTTP ${response.status}). Upload it beside app.js.`);
@@ -605,7 +635,7 @@ function downloadClassMetrics() {
     ],
   ];
   for (const row of classRows()) {
-    for (const model of benchmarkData.main) {
+    for (const model of classChartModels()) {
       rows.push([
         row.id,
         row.name,
@@ -623,7 +653,7 @@ function downloadClassMetrics() {
   const url = URL.createObjectURL(new Blob([content], { type: 'text/csv;charset=utf-8' }));
   const link = document.createElement('a');
   link.href = url;
-  link.download = 'paddylitex_per_class.csv';
+  link.download = `paddylitex_${currentStudy}_per_class.csv`;
   link.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }

@@ -10,8 +10,8 @@
     <title>PaddyLiteX · Thesis II</title>
     <link rel="icon" href="./favicon.svg" />
     <link rel="stylesheet" href="./style.css" />
-    <script src="./browser-runtime.js" defer></script>
-    <script src="./app.js" defer></script>
+    <script src="./browser-runtime.js?v=jpg-upload-20261009" defer></script>
+    <script src="./app.js?v=jpg-upload-20261009" defer></script>
   </head>
   <body>
     <header class="topbar">
@@ -180,12 +180,12 @@
           <section class="panel upload-panel" id="studio-input">
             <div class="panel-heading">
               <h2>Input image</h2>
-              <span class="micro">JPEG · PNG · WebP</span>
+              <span class="micro">JPG / JPEG · PNG · WebP</span>
             </div>
             <label class="dropzone" id="dropzone" tabindex="0">
-              <input id="file" type="file" accept="image/jpeg,image/png,image/webp" hidden />
+              <input id="file" type="file" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" hidden />
               <span id="upload-hint">
-                <span class="upload-icon" aria-hidden="true">＋</span>
+                <span class="upload-icon" aria-hidden="true">+</span>
                 <strong>Choose a paddy image</strong>
                 <span>or drag it here</span>
                 <small>Up to 10 MB · 12 megapixels</small>
@@ -239,9 +239,9 @@
               <div>
                 <label for="image-size">Model input size</label>
                 <select id="image-size">
-                  <option value="320">320 × 320</option>
-                  <option value="512" selected>512 × 512</option>
-                  <option value="640">640 × 640</option>
+                  <option value="320">320 x 320</option>
+                  <option value="512" selected>512 x 512</option>
+                  <option value="640">640 x 640</option>
                 </select>
               </div>
             </div>
@@ -358,7 +358,7 @@
         <section class="panel scatter-panel">
           <div class="panel-heading">
             <div>
-              <p class="eyebrow">PERFORMANCE–COMPLEXITY TRADE-OFF</p>
+              <p class="eyebrow">PERFORMANCE-COMPLEXITY TRADE-OFF</p>
               <h2>Where each model stands</h2>
             </div>
             <span class="micro" id="scatter-metrics">Parameters vs. mAP@0.5:0.95</span>
@@ -424,7 +424,7 @@
           <div id="class-legend" class="legend"></div>
           <div id="class-chart" aria-live="polite"></div>
           <p class="chart-note" id="class-note">
-            Test-set performance · percent · higher is better · all bars use a 0–100% scale.
+            Test-set performance · percent · higher is better · all bars use a 0-100% scale.
           </p>
         </section>
         <section class="panel table-panel">

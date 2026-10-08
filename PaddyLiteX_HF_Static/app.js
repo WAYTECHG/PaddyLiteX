@@ -232,12 +232,34 @@ function clearFile() {
   updateControls();
 }
 
+// JPG upload compatibility: some files have an alias or no MIME type.
+function isSupportedImageFile(file) {
+  if (!file) return false;
+
+  const imageType = (file.type || '').toLowerCase();
+  const supportedTypes = [
+    'image/jpeg',
+    'image/jpg',
+    'image/pjpeg',
+    'image/png',
+    'image/webp',
+  ];
+
+  if (supportedTypes.includes(imageType)) return true;
+
+  // The existing image decoder still verifies that this is an actual image.
+  return (
+    ['', 'application/octet-stream'].includes(imageType) &&
+    /\.(jpg|jpeg|png|webp)$/i.test(file.name || '')
+  );
+}
+
 async function selectFile(file) {
   if (comparisonRunning || !file) return;
   getElement('message').textContent = '';
 
-  if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) {
-    getElement('message').textContent = 'Choose a JPEG, PNG, or WebP image.';
+  if (!isSupportedImageFile(file)) {
+    getElement('message').textContent = 'Choose a JPG, JPEG, PNG, or WebP image.';
     return;
   }
   if (file.size > 10 * 1024 * 1024) {

@@ -102,6 +102,28 @@
     return canvas.toDataURL('image/png');
   }
 
+  // JPG upload compatibility: some files have an alias or no MIME type.
+  function isSupportedImageFile(file) {
+    if (!file) return false;
+
+    const imageType = (file.type || '').toLowerCase();
+    const supportedTypes = [
+      'image/jpeg',
+      'image/jpg',
+      'image/pjpeg',
+      'image/png',
+      'image/webp',
+    ];
+
+    if (supportedTypes.includes(imageType)) return true;
+
+    // The existing image decoder still verifies that this is an actual image.
+    return (
+      ['', 'application/octet-stream'].includes(imageType) &&
+      /\.(jpg|jpeg|png|webp)$/i.test(file.name || '')
+    );
+  }
+
   async function compare(form) {
     if (busy) return reply({ detail: 'A comparison is already running on this device.' }, 429);
     busy = true;
@@ -114,7 +136,9 @@
       const file = form.get('file');
       const confidence = Number(form.get('confidence'));
       const size = Number(form.get('image_size'));
-      if (!file || !['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) throw new Error('Choose a JPEG, PNG or WebP image.');
+      if (!isSupportedImageFile(file)) {
+        throw new Error('Choose a JPG, JPEG, PNG, or WebP image.');
+      }
       if (file.size > 10 * 1024 * 1024) throw new Error('Image exceeds 10 MB.');
       if (![320, 512, 640].includes(size) || !Number.isFinite(confidence) || confidence < 0.05 || confidence > 0.95) throw new Error('Invalid detection settings.');
       image = await createImageBitmap(file);
